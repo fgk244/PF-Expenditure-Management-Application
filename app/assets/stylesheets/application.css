@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+html {
+   background-image: linear-gradient(90deg, rgba(198, 240, 168, 0.7), rgba(250, 248, 233, 0.7));
+}
+
+#box{
+  height: 450px;
+}
+.money {
+  background-image: url(money.jpeg);
+}
+.money1 {
+  background-image: url(money1.jpeg);
+}
+.money2 {
+  background-image: url(money2.jpeg);
+}
+.money3 {
+  background-image: url(money3.jpeg);
+}
