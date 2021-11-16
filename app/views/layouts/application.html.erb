@@ -10,6 +10,45 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container">
+            <!--<a class="navbar-brand p-1" href="/"><%#= image_tag 'EMA', :size => '230x50' %></a>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <% if user_signed_in? %>
+               <span style="color:white">ようこそ<%= current_user.name %>さん！</span>
+              <% end %>
+              <ul class="navbar-nav ml-auto offset-7">
+                <% if user_signed_in? %>
+                  <li><%= link_to "トップ", root_path, class: 'nav-link active' %></li>
+                  <li><%= link_to "入力画面一覧", payment_records_path(current_user), class: 'nav-link active' %></li>
+                  <li><%= link_to "月検索",searches_path(current_user), class: 'nav-link active' %></li>
+                  <li><%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class: 'nav-link active' %></li>
+                <% else %>
+                  <li><%= link_to "トップ", root_path, class: 'nav-link active' %></li>
+                  <li><%= link_to "サイト説明", homes_about_path, class: 'nav-link active' %></li>
+                  <!--<li><%#= link_to "新規登録", new_user_registration_path, class: 'nav-link active' %></li>-->
+                  <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link active' %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="search-form">
+            <%#= form_with url: search_path, method: :get, local:true do |f| %>
+              <%#= f.text_field :keyword, placeholder: "Search" %>
+              <!--<%#= f.submit %>-->
+            <%# end %>
+          </div>
+        </nav>
+      </header>
+      <%= yield %>
+      <footer class=" footer mt-5">
+        <p class="text-white text-center pt-3">©EMA</p>
+        </footer>
+    </div>
   </body>
 </html>

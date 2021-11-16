@@ -17,6 +17,11 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+* {
+ margin: 0px;
+ padding: 0px;
+}
+
 html {
    background-image: linear-gradient(90deg, rgba(198, 240, 168, 0.7), rgba(250, 248, 233, 0.7));
 }
@@ -35,4 +40,32 @@ html {
 }
 .money3 {
   background-image: url(money3.jpeg);
+}
+
+html, body {
+ height: 100%;
+}
+
+header {
+ background-color: grey;
+ opacity: 0.8;
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+.blank{
+ height: 50px;
+}
+
+footer {
+ width: 100%;
+ height: 50px;
+ position: absolute;
+ bottom: 0;
+ background-color: grey;
+ opacity: 0.8;
 }
