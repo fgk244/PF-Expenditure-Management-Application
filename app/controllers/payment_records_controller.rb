@@ -3,10 +3,12 @@ class PaymentRecordsController < ApplicationController
   def index
     @payment_record = PaymentRecord.new
     @payment_records = PaymentRecord.page(params[:page]).per(10)
+    @total_payment = @payment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
   end
 
   def new
     @payment_record = PaymentRecord.new
+    @payment_records = Category.all
   end
 
   def create

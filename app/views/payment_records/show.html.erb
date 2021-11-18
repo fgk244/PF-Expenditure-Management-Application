@@ -1,0 +1,37 @@
+<div class="container">
+  <h3 class="my-3">支払実績詳細</h3>
+  <div class="row">
+    <div class="col-lg-4 col-md-12 mx-auto">
+      <%= attachment_image_tag @payment_record, :voucher, format: 'jpeg', class: 'img-fluid'  %>
+    </div>
+    <div class="col-lg-8 col-md-12 mx-auto">
+      <table class="table table-borderless">
+        <tr>
+          <th>日付</th>
+          <td><%= @payment_record.date %></td>
+        </tr>
+        <tr>
+          <th>支払金額（税込）</th>
+          <td><%= @payment_record.payment.to_i.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>カテゴリ</th>
+          <td><%= @payment_record.category.category_name %></td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @payment_record.payment_method %></td>
+        </tr>
+        <tr>
+          <th>メモ</th>
+          <td><% @payment_record.memo %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <%= link_to "編集する",  edit_payment_record_path(@payment_record), class: "btn btn-success center-block " %>
+    </div>
+  </div>
+</div>
