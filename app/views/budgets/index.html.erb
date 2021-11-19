@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h3 class="my-3">予算編集</h3>
+      <%= form_with model:@newbudget,url: budgets_path, lacal:true do |f| %>
+        <div class="form-group">
+          <%= f.label :予算金額 %>
+          <%= f.text_field :budget_amount, placeholder: "99999" %>
+          <%= f.submit "新規登録", class: 'btn btn-success' %>
+        </div>
+      <% end %>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>予算金額</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td><%#= @budget.budget_amount %></td>
+            <td><%#= link_to '編集する', edit_budget_path(budget.id), class: "btn btn-success" %></td>
+            <td><%#= link_to "削除する", budgets_path(budget.id), method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
