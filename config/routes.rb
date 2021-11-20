@@ -8,9 +8,15 @@ Rails.application.routes.draw do
 
   resources :users
   resources :searches
-  resources :payment_records
+  resources :payment_records do
+     collection do
+      get 'search'
+     end
+  end
   resources :categories
   resources :budgets
+
+
 
   delete 'destroy_all', to: 'payment_records#destroy_all'
 

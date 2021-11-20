@@ -1,5 +1,12 @@
 class PaymentRecordsController < ApplicationController
 
+  def search
+    @search_params = payment_record_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
+    @payment_records = PaymentRecord.search(payment_record_search_params)  #Payment_recordモデルのsearchを呼び出し、引数としてparamsを渡している。
+
+    #@total_payment = @serches.inject(0) { |sum, payment_record| sum + payment_record.payment }
+  end
+
   def index
     @payment_record = PaymentRecord.new
     @payment_records = PaymentRecord.page(params[:page]).per(10)
@@ -23,8 +30,7 @@ class PaymentRecordsController < ApplicationController
 
   def create
     # binding.pry
-    @payment_record = PaymentRecord.new(payment_record_params)
-    @payment_record.save
+    current_user.payment_records.create!(payment_record_params)
     # binding.pry
     #　render :new
     redirect_to payment_records_path
@@ -50,5 +56,10 @@ private
   def payment_record_params
     params.require(:payment_record).permit(:category_id, :budgetary, :date, :payment, :payment_method, :memo, :voucher, :created_at, :updated_at, ).merge(budget_id: current_user.id)
   end
+
+  def payment_record_search_params
+    params.fetch(:search, {}).permit(:from_date, :to_date, :category, :payment_method, :memo, :payment)
+  end
+
 
 end

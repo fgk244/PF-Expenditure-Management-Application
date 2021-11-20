@@ -1,0 +1,40 @@
+<div class="search-form">
+
+  <%= form_with(scope: :search, url: search_payment_records_path, method: :get, local: true) do |f| %>
+
+  <%= f.label :date, "検索日" %>
+  <%= f.date_field :from_date, value: @search_params[:date] %> ~
+  <%= f.date_field :to_date, value: @search_params[:date] %>
+
+  <%= f.label :category, "カテゴリ" %>
+  <%= f.text_field :category, value: @search_params[:category] %>
+
+  <%= f.label :payment_method, "支払方法" %>
+  <%= f.text_field :payment_method, value: @search_params[:payment_method] %>
+
+  <%= f.label :memo, "メモ" %>
+  <%= f.text_field :memo, value: @search_params[:memo] %>
+
+  <%= submit_tag '検索', class: "button" %>
+<% end %>
+</div>
+
+<table>
+<tr>
+<td> <br>
+<h3>支払金額合計　<%#= @total_payment.to_s(:delimited) %>円</h3><td>
+</tr>
+</table>
+
+<div>
+  <% unless @search_params.blank? %>
+  <% @payment_records.each do |search| %>
+    <tr>
+      <td><%= search.date %></td>
+      <td><%= search.payment_method %></td>
+      <td><%= search.memo %></td>
+      <td><%= search.payment %></td>
+    </tr>
+  <% end %>
+<% end %>
+</div>
