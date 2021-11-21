@@ -2,8 +2,8 @@ class PaymentRecordsController < ApplicationController
 
   def search
     @search_params = payment_record_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
-    @payment_records = PaymentRecord.search(payment_record_search_params)  #Payment_recordモデルのsearchを呼び出し、引数としてparamsを渡している。
-
+    # @payment_records = PaymentRecord.search(payment_record_search_params).joins(:category)  #Payment_recordモデルのsearchを呼び出し、引数としてparamsを渡している。
+    @payment_records = PaymentRecord.search(payment_record_search_params)
     #@total_payment = @serches.inject(0) { |sum, payment_record| sum + payment_record.payment }
   end
 
@@ -58,7 +58,7 @@ private
   end
 
   def payment_record_search_params
-    params.fetch(:search, {}).permit(:from_date, :to_date, :category, :payment_method, :memo, :payment)
+    params.fetch(:search, {}).permit(:from_date, :to_date, :category_id, :payment_method, :memo, :payment)
   end
 
 

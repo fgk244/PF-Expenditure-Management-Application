@@ -7,7 +7,7 @@
   <%= f.date_field :to_date, value: @search_params[:date] %>
 
   <%= f.label :category, "カテゴリ" %>
-  <%= f.text_field :category, value: @search_params[:category] %>
+  <%= f.collection_select :category_id, Category.all, :id, :category_name, prompt: "必要な場合は選択", class: 'form-control col-7' %>
 
   <%= f.label :payment_method, "支払方法" %>
   <%= f.text_field :payment_method, value: @search_params[:payment_method] %>
@@ -26,15 +26,29 @@
 </tr>
 </table>
 
-<div>
-  <% unless @search_params.blank? %>
-  <% @payment_records.each do |search| %>
+ <table class='table table-hover '>
+  　<thead>
     <tr>
-      <td><%= search.date %></td>
+      <th class="col-1">日付</th>
+      <th class="col-3">カテゴリ</th>
+      <th class="col-2">支払方法</th>
+      <th class="col-2">メモ</th>
+      <th class="col-2">支払金額</th>
+      <th class="col-2">証憑画像</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% unless @search_params.blank? %>
+      <% @payment_records.each do |search| %>
+    <tr>
+      <td><%= link_to search.date, payment_record_path(search) %></td>
+      <td><%= search.category.category_name %></td>
       <td><%= search.payment_method %></td>
       <td><%= search.memo %></td>
-      <td><%= search.payment %></td>
+      <td><%= search.payment.to_s(:delimited) %></td>
+      <td><%= attachment_image_tag search, :voucher, format: 'jpeg', class: 'img-fluid' %></td>
     </tr>
   <% end %>
 <% end %>
-</div>
+    </tbody>
+  </table>
