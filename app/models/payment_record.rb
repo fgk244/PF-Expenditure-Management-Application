@@ -7,7 +7,7 @@ class PaymentRecord < ApplicationRecord
 
   belongs_to :user
 
-  belongs_to :budget, optional: true
+
 
 
    scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数

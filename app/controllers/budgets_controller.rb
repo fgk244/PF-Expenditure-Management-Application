@@ -4,6 +4,11 @@ def index
   @newbudget = Budget.new
 end
 
+def new
+  @newbudget = Budget.new
+  #redirect_to payment_records_path
+end
+
 def edit
   @budget = Budget.find(params[:id])
   # binding.pry
@@ -18,8 +23,9 @@ end
 
 def create
   @budget = Budget.new(budget_params)
+  @budget.user_id = current_user.id
   @budget.save
-  redirect_to budgets_path
+  redirect_to payment_records_path
 end
 
  private

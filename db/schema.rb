@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_051103) do
     t.string "budget_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -32,10 +33,9 @@ ActiveRecord::Schema.define(version: 2021_11_21_051103) do
     t.string "payment_method"
     t.string "memo"
     t.string "voucher_id"
-    t.integer "budget_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "searches", force: :cascade do |t|

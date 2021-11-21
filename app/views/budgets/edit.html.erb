@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-5">
       <h3 class="my-3">予算編集</h3>
-      <%= form_with model:@budget,url: edit_budget_path(@budget), lacal:true, method: :patch do |f| %>
+      <%= form_with model:@budget,url: budget_path(@budget), lacal:true, method: :patch do |f| %>
         <div class="form-group">
           <%= f.label :予算金額 %>
           <%= f.text_field :budget_amount, placeholder: "99999" %>
-          <%= f.submit "新規登録", class: 'btn btn-success' %>
+          <%= f.submit "更新", class: 'btn btn-success' %>
         </div>
       <% end %>
 
@@ -21,8 +21,8 @@
 
           <tr>
             <td><%= @budget.budget_amount %></td>
-            <td><%= link_to '編集する', edit_budget_path(@budget.id), class: "btn btn-success" %></td>
-            <td><%= link_to "削除する", budgets_path(@budget.id), method: :delete, class: "btn btn-danger" %></td>
+            <td><%#= link_to '編集する', budget_path(@budget.id),method: :patch, class: "btn btn-success" %></td>
+            <td><%#= link_to "削除する", budgets_path(@budget.id), method: :delete, class: "btn btn-danger" %></td>
           </tr>
 
         </tbody>

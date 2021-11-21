@@ -9,8 +9,8 @@ class CreatePaymentRecords < ActiveRecord::Migration[5.2]
       t.string :payment_method
       t.string :memo
       t.string :voucher_id
-      t.integer :budget_id
-      
+      t.integer :user_id
+
       # t.datetime :created_at
       # t.datetime :updated_at
 
