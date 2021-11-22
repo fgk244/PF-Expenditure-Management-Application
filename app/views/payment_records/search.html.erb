@@ -39,7 +39,7 @@
     </thead>
     <tbody>
       <% unless @search_params.blank? %>
-      <% @payment_records.each do |search| %>
+      <% @spayment_records.each do |search| %>
     <tr>
       <td><%= link_to search.date, payment_record_path(search) %></td>
       <td><%= search.category.category_name %></td>

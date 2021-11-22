@@ -11,14 +11,20 @@ class PaymentRecordsController < ApplicationController
       @total_search_payment = 0
     else
       @payment_records = PaymentRecord.search(payment_record_search_params)
-      @total_search_payment = @payment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
+      payment_records = @payment_records
+      @spayment_records = current_user.payment_records
+      @total_search_payment = @spayment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
     end
   end
 
   def index
     @payment_record = PaymentRecord.new
-    @payment_records = PaymentRecord.page(params[:page]).per(10)
-    @total_payment = @payment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
+    #@payment_records = PaymentRecord.page(params[:page]).per(10)
+    @payment_records = PaymentRecord.all
+    payment_records = @payment_records
+    @mypayment_records = current_user.payment_records
+
+    @total_payment = @mypayment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
 
     @budget = current_user.budget
 
@@ -40,10 +46,7 @@ class PaymentRecordsController < ApplicationController
   end
 
   def create
-    # binding.pry
     current_user.payment_records.create!(payment_record_params)
-    # binding.pry
-    #　render :new
     redirect_to payment_records_path
   end
 
