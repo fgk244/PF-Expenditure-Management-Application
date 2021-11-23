@@ -3,14 +3,12 @@ class PaymentRecordsController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    @search_params = payment_record_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
-    # @payment_records = PaymentRecord.search(payment_record_search_params).joins(:category)  #Payment_recordモデルのsearchを呼び出し、引数としてparamsを渡している。
-    # binding.pry
+    @search_params = payment_record_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする。
     if payment_record_search_params.blank?
       @payment_records = []
       @total_search_payment = 0
     else
-      @payment_records = PaymentRecord.search(payment_record_search_params)
+      @payment_records = PaymentRecord.search(payment_record_search_params)#Payment_recordモデルのsearchを呼び出し、引数としてparamsを渡している。
       payment_records = @payment_records
       @spayment_records = current_user.payment_records
       @total_search_payment = @spayment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
@@ -19,10 +17,10 @@ class PaymentRecordsController < ApplicationController
 
   def index
     @payment_record = PaymentRecord.new
-    #@payment_records = PaymentRecord.page(params[:page]).per(10)
-    @payment_records = PaymentRecord.all
+    #@payment_records = PaymentRecord
+    @payment_records = PaymentRecord.page(params[:page]).per(10)
     payment_records = @payment_records
-    @mypayment_records = current_user.payment_records
+    @mypayment_records = current_user.payment_records.order(date: "ASC")
 
     @total_payment = @mypayment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
 

@@ -21,9 +21,10 @@
               <% if user_signed_in? %>
                <span style="color:white">ようこそ<%= current_user.name %>さん！</span>
               <% end %>
-              <ul class="navbar-nav ml-auto offset-7">
+              <ul class="navbar-nav ml-auto offset-6">
                 <% if user_signed_in? %>
                   <li><%= link_to "トップ", root_path, class: 'nav-link active' %></li>
+                  <li><%= link_to "サイト説明", homes_about_path, class: 'nav-link active' %></li>
                   <li><%= link_to "入力画面一覧", payment_records_path(current_user), class: 'nav-link active' %></li>
                   <li><%= link_to "月検索",search_payment_records_path(current_user), class: 'nav-link active' %></li>
                   <li><%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class: 'nav-link active' %></li>
@@ -31,7 +32,6 @@
                 <% else %>
                   <li><%= link_to "トップ", root_path, class: 'nav-link active' %></li>
                   <li><%= link_to "サイト説明", homes_about_path, class: 'nav-link active' %></li>
-                  <!--<li><%#= link_to "新規登録", new_user_registration_path, class: 'nav-link active' %></li>-->
                   <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link active' %></li>
                 <% end %>
               </ul>

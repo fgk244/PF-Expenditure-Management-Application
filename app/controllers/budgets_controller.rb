@@ -6,12 +6,10 @@ end
 
 def new
   @newbudget = Budget.new
-  #redirect_to payment_records_path
 end
 
 def edit
   @budget = Budget.find(params[:id])
-  # binding.pry
 end
 
 def update
