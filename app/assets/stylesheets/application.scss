@@ -54,9 +54,9 @@ html, body {
  height: 100%;
 }
 
-header {
- background-color: grey;
- opacity: 0.8;
+.navbar {
+  background-color: rgba(0, 0, 0, .7);
+ // opacity: 0.8;
 }
 
 .wrapper {
