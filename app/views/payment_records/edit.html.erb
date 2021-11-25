@@ -33,6 +33,9 @@
       <%= f.submit '変更を保存', class: "btn btn-success" %>
       </div>
       <% end %>
+      <div class="offset-5">
+      <%= link_to '変更せずに戻る', payment_record_path(@payment_record) %>
+      </div>
     </div>
   </div>
 </div>

@@ -65,12 +65,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'bootstrap'
+
 gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'pry-byebug'
 gem 'byebug'
+
+gem "chartkick"
+gem 'chartable'
 
 gem "rails-i18n"
 

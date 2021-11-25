@@ -35,7 +35,6 @@ class PaymentRecordsController < ApplicationController
     #@number = num.budget_amount
     @budgets = Budget.all
 
-
   end
 
   def new
