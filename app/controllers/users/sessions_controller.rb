@@ -11,6 +11,11 @@ class Users::SessionsController < Devise::SessionsController
       end
     end
    end
+
+    def after_sign_in_path_for(resource)
+      payment_records_path(resource)
+    end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

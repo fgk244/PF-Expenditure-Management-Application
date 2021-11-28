@@ -1,10 +1,13 @@
-<div>
+<div class="text-center">
   <h2>本当に退会しますか？</h2>
   <div>
+    <p>退会すると今まで記録されたデータは全て削除されます。<br>
+       本当によろしいですか？<br></p>
+
     <p>退会する場合は、『退会する』をクリックしてください。</p>
   </div>
   <div>
     <%= link_to '退会しない', payment_records_path(current_user) %>
-    <%= link_to "退会する", withdraw_user_path(current_user), method: :patch %>
+    <%= link_to "退会する", user_path(current_user), method: :delete %>
   </div>
 </div>
