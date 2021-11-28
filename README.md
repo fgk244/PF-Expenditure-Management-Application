@@ -67,9 +67,14 @@ CRUD機能<br />
 これと同様にお金を使った時にも「ヨシ！」ができれば破産を防ぐきっかけとなってくれるでしょう。<br />
 
 
-
 ## 設計書
-<...>
+■ER図<br />
+https://drive.google.com/file/d/1VV7yCujjBj9OlWpglKvKAhHKeu4vBOkX/view?usp=sharing<br />
+■テーブル定義書<br />
+https://docs.google.com/spreadsheets/d/1OQZGFsvfx6TiG9K-oSyyO5K9xeoPEsGmkbx6IqQ3_cM/edit?usp=sharing<br />
+■アプリケーション詳細設計<br />
+https://docs.google.com/spreadsheets/d/1g1GTXdj9DbnR3aK5oKgtOE1c_pTXyKHjLAKtR-hYakA/edit?usp=sharing<br />
+
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1gnQPWEXeMKmfIVMl0208o0ZxKf8zOFqhHqcJ7VGKazc/edit?usp=sharing
