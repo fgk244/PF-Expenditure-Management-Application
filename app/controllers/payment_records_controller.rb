@@ -17,22 +17,11 @@ class PaymentRecordsController < ApplicationController
 
   def index
     @payment_record = PaymentRecord.new
-    #@payment_records = PaymentRecord
     @payment_records = PaymentRecord.page(params[:page]).per(10)
     payment_records = @payment_records
     @mypayment_records = current_user.payment_records.order(date: "ASC")
-
     @total_payment = @mypayment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
-
     @budget = current_user.budget
-
-
-    # @budget = Budget.new
-    #@payment = PaymentRecord.last
-    #current_user.payment_records.last
-    #@bud = @payment.budget_id
-    #num = Budget.find_by(id: @bud)
-    #@number = num.budget_amount
     @budgets = Budget.all
 
   end
@@ -43,8 +32,20 @@ class PaymentRecordsController < ApplicationController
   end
 
   def create
-    current_user.payment_records.create!(payment_record_params)
-    redirect_to payment_records_path
+    @payment_record = current_user.payment_records.new(payment_record_params)
+     if @payment_record.save
+     # if current_user.payment_records.create!(payment_record_params)
+      redirect_to payment_records_path
+     else
+      @payment_records = PaymentRecord.page(params[:page]).per(10)
+      payment_records = @payment_records
+      @mypayment_records = current_user.payment_records.order(date: "ASC")
+      @total_payment = @mypayment_records.inject(0) { |sum, payment_record| sum + payment_record.payment }
+      @budget = current_user.budget
+      @budgets = Budget.all
+      render :index
+     end
+
   end
 
   def show

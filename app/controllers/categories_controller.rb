@@ -2,13 +2,17 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @category.user_id = current_user.id
     @category.save!
     redirect_to categories_path
   end
 
   def index
     @newcategory = Category.new
-    @categories = Category.all
+    @categories = Category.page(params[:page]).per(10)
+    categories = @categories
+    @categories = current_user.categories
+
   end
 
   def edit

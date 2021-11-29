@@ -1,14 +1,14 @@
 class PaymentRecord < ApplicationRecord
 
+  #validates :category_id, presence: true
+  validates :payment, presence: true
+
   attachment :voucher
 
   belongs_to :category
   # belongs_to :budget
 
   belongs_to :user
-
-
-
 
    scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
     return if search_params.blank?      #検索フォームに値がなければ以下の手順は行わない
