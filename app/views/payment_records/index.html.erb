@@ -81,7 +81,7 @@
     </tbody>
      <h3>支払金額合計　<%= @total_payment.to_s(:delimited) %>円<%= link_to "/予算　#{@budget.budget_amount.to_i.to_s(:delimited)}円", edit_budget_path(@budget.id) %></h3>
   </table>
-  <div class='row'>
+  <div class='footer1'>
    <%= paginate @payment_records %>
   </div>
 </div>
