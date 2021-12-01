@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <th>メモ</th>
-          <td><% @payment_record.memo %></td>
+          <td><% @payment_record.memo %><p class="sentiment-score text-success">メモの感情分析スコア[<%= @payment_record.score %>]</p></td>
         </tr>
       </table>
     </div>

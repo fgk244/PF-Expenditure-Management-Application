@@ -33,6 +33,7 @@ class PaymentRecordsController < ApplicationController
 
   def create
     @payment_record = current_user.payment_records.new(payment_record_params)
+    @payment_record.score = Language.get_data(payment_record_params[:memo])
      if @payment_record.save
      # if current_user.payment_records.create!(payment_record_params)
       redirect_to payment_records_path

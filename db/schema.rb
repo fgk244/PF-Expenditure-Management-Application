@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_21_051103) do
+ActiveRecord::Schema.define(version: 2021_12_01_085750) do
 
   create_table "budgets", force: :cascade do |t|
     t.string "budget_amount"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_051103) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "searches", force: :cascade do |t|
