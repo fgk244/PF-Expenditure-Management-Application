@@ -8,8 +8,6 @@ class User < ApplicationRecord
 
   has_many :payment_records
   has_one :budget
-
   has_many :categories
-
 
 end

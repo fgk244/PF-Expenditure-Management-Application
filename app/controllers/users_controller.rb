@@ -10,6 +10,7 @@ before_action :set_user, :only => [:destroy]
   end
 
   private
+
   def set_user
      @user = User.find_by(:id => params[:id])
   end

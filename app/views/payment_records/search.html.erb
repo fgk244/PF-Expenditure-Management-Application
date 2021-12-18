@@ -16,7 +16,7 @@
   <%= f.text_field :memo, value: @search_params[:memo] %>
 
   <%= submit_tag '検索', class: "button" %>
-<% end %>
+  <% end %>
 </div>
 
 <table>
@@ -48,7 +48,7 @@
       <td><%= search.payment.to_s(:delimited) %></td>
       <td><%= attachment_image_tag search, :voucher, format: 'jpeg', class: 'img-fluid' %></td>
     </tr>
-  <% end %>
-<% end %>
+      <% end %>
+      <% end %>
     </tbody>
   </table>
