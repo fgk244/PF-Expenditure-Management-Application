@@ -87,7 +87,7 @@ https://docs.google.com/spreadsheets/d/1gnQPWEXeMKmfIVMl0208o0ZxKf8zOFqhHqcJ7VGK
 - IDE：Cloud9
 
 ## 使用素材
-■ライフイベントの一覧と各ライフイベントにかかる費用を解説！
+■ライフイベントの一覧と各ライフイベントにかかる費用を解説！<br />
 https://money-career.com/article/571#i-2
 
 ## 作成者
